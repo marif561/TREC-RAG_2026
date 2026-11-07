@@ -1,0 +1,7 @@
+Extract up to {n_ask} ATOMIC factual claims that help answer the information need. Each claim must be a single concrete fact (<= 22 words) that appears in the evidence (names, numbers, comparisons, mechanisms, causes, effects, policies, risks, actions, dates, quantities).
+Do NOT summarize into vague themes. Prefer many specific facts over a few broad ones. Quote entities and numbers faithfully. Skip titles and meta text.
+Every claim MUST cite at least one evidence id that contains the fact.
+Return JSON: {{"claims": [{{"text": ..., "support": [evidence_ids]}}]}}.
+Information need: {topic}
+{aspects_or_priority_aspect}
+Evidence: {numbered_evidence_sentences}

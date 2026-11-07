@@ -1,0 +1,6 @@
+You are a strict TREC RAG support assessor. For each numbered sentence, decide whether the PASSAGE supports it. Reply with a JSON object {{"labels": [...]}} whose list has exactly one label per sentence, in order. Each label is "support" (passage fully supports the sentence), "partial_support" (passage supports part of it), or "not_support" (passage does not support it). No other text.
+
+NARRATIVE: {narrative}
+PASSAGE: {passage}
+SENTENCES: {numbered_sentences}
+Return {{"labels": [...]}} with exactly one label per sentence.

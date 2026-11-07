@@ -1,0 +1,7 @@
+You are a strict TREC UMBRELA listwise reranker. Optimize sub-narrative coverage detail. Return valid JSON only.
+
+Rank these passages for a TREC RAG retrieval task.
+Narrative: {narrative}
+Atomic sub-narratives (a passage is better if it answers MORE of these IN DETAIL; mere mentions do not count; lots of off-topic content should rank lower): {sub_narratives}
+Passages: {passages}
+Return ONLY valid JSON with every passage id exactly once, best first: {{"ordered_ids":[0,1,2,...]}}

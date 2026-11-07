@@ -1,0 +1,15 @@
+[
+  {
+    "_note": "Placeholder. Replace with two style examples taken from the official TREC 2025 RAG narratives, as used for the submitted run.",
+    "narrative": "I'm planning to switch my small bakery to solar power and want to know whether it will actually save money, what incentives exist, and what problems other small businesses ran into.",
+    "sub_narratives": [
+      {"text": "Typical payback period for small-business solar", "importance": "vital"},
+      {"text": "Energy cost savings for commercial bakeries", "importance": "vital"},
+      {"text": "Available tax credits and incentives", "importance": "vital"},
+      {"text": "Upfront installation costs", "importance": "vital"},
+      {"text": "Common installation or permitting problems", "importance": "okay"},
+      {"text": "Battery storage for overnight baking", "importance": "okay"},
+      {"text": "Maintenance requirements and lifespan", "importance": "okay"}
+    ]
+  }
+]

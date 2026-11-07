@@ -1,0 +1,6 @@
+Convert each claim into ONE short fluent sentence (12-28 words) that PRESERVES the specific fact (names, numbers, comparisons). Do not merge claims. Do not drop details. No titles or bracket tags in text.
+Citations: use only allowed_citations for that claim (1-3 ints).
+
+Information need: {topic}
+Claims: {claims_with_allowed_citations}
+Return JSON: {{"sentences": [{{"id": <claim id>, "text": ..., "citations": [ints]}}]}}.

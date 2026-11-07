@@ -1,0 +1,15 @@
+You decompose first-person information needs into atomic sub-narratives for passage grading. Return only valid JSON.
+
+Decompose the narrative below into atomic sub-narratives.
+A sub-narrative is one specific, independently answerable facet of the user's need.
+Follow the official TREC RAG style:
+- Produce 6 to 10 sub-narratives (prefer 7-9 when the narrative is multi-faceted).
+- Each "text" is short (typically under 15 words): a noun phrase or a focused question.
+- Cover distinct facets; do not paraphrase the same facet.
+- Stay faithful to the narrative; do not invent entities, events, or claims not implied by it.
+- Mark importance as "vital" for core facets and "okay" for secondary ones.
+- Roughly half or more should be "vital".
+Return JSON with "sub_narratives", each containing "text" and "importance".
+{examples}
+Narrative:
+{narrative}

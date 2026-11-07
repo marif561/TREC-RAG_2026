@@ -1,0 +1,10 @@
+Given a user first person narrative and a passage, you must provide a score on an integer scale of 0 to 4:
+0 - the passage has nothing to do with the narrative,
+1 - the passage seems related but contains no sub-narrative of an answer,
+2 - the passage contains a detailed answer for 1 sub-narrative,
+3 - the passage contains a detailed answer for 2 to 3 sub-narratives,
+4 - the passage contains a detailed answer for 4 or more sub-narratives.
+Narrative: {narrative}
+Sub-narratives: {sub_narratives}
+Passage: {passage}
+A passage must cover a sub-narrative in a detailed, proper way to count; mere mentions do not qualify. Extra unrelated information lowers the score by 1, or by 2 when it is extensive. Give only the score as: ##final score: X

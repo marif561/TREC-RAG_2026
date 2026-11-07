@@ -1,0 +1,71 @@
+# Frozen configuration of the two submitted runs (Table 8 of the paper).
+team_id: DM-Lab-RAG-2026
+retrieval_run_id: DMLabWin055
+generation_run_id: DMLabRAGMerge
+cache_dir: .cache/llm
+
+topics:
+  path: data/topics.rag26.jsonl
+  sha256_prefix: 72dc2fd3        # official topic file; SHA-256 starts 72dc2fd3 and ends 8a2c
+
+search:
+  backend: rest                  # shared climbmix-400b BM25 index via Pyserini REST
+  base_url: http://localhost:8081   # set to the service URL you were given
+  index: climbmix-400b
+  # backend: lucene
+  # index_path: /path/to/lucene-index.climbmix-400b
+
+# One OpenAI-compatible client per role. Open-weight judges can be served with vLLM:
+#   vllm serve Qwen/Qwen3.5-9B --port 8001
+models:
+  planner:           {model: gpt-4.1-mini}
+  subnarratives:     {model: gpt-4.1-mini}
+  grader:            {model: gpt-4.1-mini}
+  umbrela_qwen:      {model: Qwen/Qwen3.5-9B,          base_url: http://localhost:8001/v1}
+  umbrela_ministral: {model: mistralai/Ministral-3-14B, base_url: http://localhost:8002/v1}
+  listwise:          {model: gpt-5.6-sol}
+  claims_strong:     {model: gpt-5.6-sol}
+  claims_dense:      {model: gpt-4.1-mini}
+  sentences:         {model: gpt-4.1-mini}
+  citation_judge:    {model: gpt-4.1-mini}
+
+retrieval:
+  max_views: 7
+  max_bag_terms: 24
+  max_big_query_words: 120
+  max_sketches: 4
+  hits_per_query: 200
+  dedup_prefix_chars: 200
+  dedup_jaccard_chars: 1200
+  dedup_jaccard: 0.90
+  rrf_k: 60
+  pool_size: 100
+  n_decompositions: 2
+  subnarrative_examples: data/subnarrative_examples.json
+  weights: {r: 0.3, g: 0.1, uq: 0.4, um: 0.1, cov: 0.1}   # Table 2; cov absent at test -> redistributed
+  rerank_head: 30
+  rerank_alpha: 0.55
+  rerank_max_chars: 1800
+  depth_min_grade: 2
+  depth_floor: 1
+  depth_ceiling: 100
+
+generation:
+  evidence_top_docs: 40          # top 40 of the listwise run, before the depth cut
+  evidence_min_chars: 50
+  evidence_max_chars: 420
+  evidence_max_sentences: 80
+  pass1_n_ask: 60
+  window_size: 18
+  window_stride: 9
+  window_n_ask: 12
+  targeted_overlap: 0.35
+  targeted_n_ask: 6
+  max_claims: 90
+  claim_dup_overlap: 0.85
+  max_citations: 3
+  word_budget: 1000
+  aspect_weight: 3.0
+  verify_citations: true
+  citation_max_chars: 4000
+  prune_references: false

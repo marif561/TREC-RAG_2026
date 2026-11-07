@@ -1,0 +1,10 @@
+You generate dense-retrieval evidence sketches.
+Given the topic below, output JSON with:
+- "evidence_sketches": 2 to 4 short passages, each 40 to 80 words
+Rules:
+- Each sketch should describe one likely answer facet.
+- Write in plain factual prose as if it were a relevant passage.
+- It is okay if details are approximate; do not invent named entities that are not already implied by the topic.
+- Cover different facets, not paraphrases of the same facet.
+Topic:
+{topic}
